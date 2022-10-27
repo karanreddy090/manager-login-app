@@ -12,10 +12,10 @@ export default function handler(
   console.log('body: ', body)
 
   // Both of these are required.
-  if (!body.first || !body.last) {
-    return res.json({ data: 'First or last name not found' })
+  if (!body.username || !body.password) {
+    return res.json({ data: 'username or password missing' })
   }
 
   // Found the name.
-  res.json({ data: `${body.first} ${body.last}` })
+  res.json({ data: `username:${body.username}, password:${body.password}` })
 }
