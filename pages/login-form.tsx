@@ -2,7 +2,7 @@ import useAuth from "../hooks/useAuth";
 import { useState } from 'react';
 
 
-export default function LoginForm({ isLoggedin, setIsLoggedin }) {
+export default function LoginForm({ isLoggedin, setIsLoggedin }:{isLoggedin:boolean, setIsLoggedin: React.Dispatch<React.SetStateAction<boolean>>}) {
   const { login } = useAuth();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -22,20 +22,20 @@ export default function LoginForm({ isLoggedin, setIsLoggedin }) {
     event.preventDefault();
   }
 
-  const handleAgentLogin = (event: React.FormEvent<HTMLFormElement>) => {
-    debugger;
-    setIsSubmiting(true);
-    const data = new FormData(event.target);
-    agentlogin({ username, password, isAdmin: data.isAdmin, agent: data.agent }, setIsSubmiting).then(data => {
-      if (data.AccessToken != null) {
-        setIsLoggedin(true);
-      }
-    }).catch(err => {
-      console.log("Login failed"); // Handle this in the UI
-      console.log(err);
-    });
-    event.preventDefault();
-  }
+  // const handleAgentLogin = (event: React.FormEvent<HTMLFormElement>) => {
+  //   debugger;
+  //   setIsSubmiting(true);
+  //   const data = new FormData(event.target);
+  //   agentlogin({ username, password, isAdmin: data.isAdmin, agent: data.agent }, setIsSubmiting).then(data => {
+  //     if (data.AccessToken != null) {
+  //       setIsLoggedin(true);
+  //     }
+  //   }).catch(err => {
+  //     console.log("Login failed"); // Handle this in the UI
+  //     console.log(err);
+  //   });
+  //   event.preventDefault();
+  // }
 
 
   return (
@@ -47,7 +47,7 @@ export default function LoginForm({ isLoggedin, setIsLoggedin }) {
         <input onChange={(e) => setPassword(e.target.value)} type="password" id="password" name="password" value={password} />
         <button type="submit" disabled={isSubmitting}>Submit</button>
       </form>}
-      {isLoggedin && <form onSubmit={handleAgentLogin} method="post">
+      {isLoggedin && <form method="post">
         <input type="hidden" id="username" name="username" value={username} />
         <input type="hidden" id="password" name="password" value={password} />
         <input type="hidden" id="isAdmin" name="isAdmin" value={"true"} />
