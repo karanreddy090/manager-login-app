@@ -29,7 +29,7 @@ label {
   color: #3b3b3b;
 }
 
-input {
+input, select {
   display: table;
   width: 100%;
   padding: 0.5rem;

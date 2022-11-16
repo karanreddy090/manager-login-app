@@ -1,8 +1,10 @@
 import Head from 'next/head'
+import { useState } from 'react';
 import styles from '../styles/Home.module.css'
-import Form from './no-js-form'
+import LoginForm from './login-form'
 
 export default function IndexPage() {
+  const [isLoggedin, setIsLoggedin] = useState(false);
   return (
     <div className={styles.container}>
       <Head>
@@ -13,9 +15,10 @@ export default function IndexPage() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-         Manager Login
+         {!isLoggedin && "Manager Login"}
+         {isLoggedin && "Login as Agent"}
         </h1>
-        <Form />        
+        <LoginForm isLoggedin={isLoggedin} setIsLoggedin={setIsLoggedin}/>        
       </main>
 
       <footer className={styles.footer}>
