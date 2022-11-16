@@ -1,13 +1,14 @@
 import { CognitoIdentityProviderClient, InitiateAuthCommand } from "@aws-sdk/client-cognito-identity-provider"
+import { NextApiRequest, NextApiResponse } from "next/types";
 
 const { COGNITO_REGION, COGNITO_APP_CLIENT_ID, COGNITO_USER_POOL_ID } = process.env
 
 export default async function handler(
-    req,
-    res
+    req:NextApiRequest,
+    res:NextApiResponse,
     ) {
         debugger;
- if (req.method !== 'POST') return res.status(405).send()
+ if (req.method !== 'POST') return res.status(405).send({body:"error"})
 
     const params = {
         AuthFlow: 'USER_PASSWORD_AUTH',
