@@ -1,4 +1,4 @@
-import { CognitoIdentityProviderClient, InitiateAuthCommand } from "@aws-sdk/client-cognito-identity-provider"
+import { CognitoIdentityProviderClient, InitiateAuthCommand, InitiateAuthCommandOutput } from "@aws-sdk/client-cognito-identity-provider"
 import { NextApiRequest, NextApiResponse } from "next/types";
 
 const { COGNITO_REGION, COGNITO_APP_CLIENT_ID, COGNITO_USER_POOL_ID } = process.env
@@ -28,10 +28,10 @@ export default async function handler(
     try {
         const response = await cognitoClient.send(initiateAuthCommand)
         console.log(response)
-        return res.status(response['$metadata'].httpStatusCode).json({
+        return res.status(response['$metadata']?.httpStatusCode || 200).json({
             ...response.AuthenticationResult
         })
-    } catch (err) {
+    } catch (err:any) {
         console.log(err)
         return res.status(err['$metadata'].httpStatusCode).json({ message: err.toString() })
     }
