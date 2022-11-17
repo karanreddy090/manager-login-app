@@ -1,0 +1,10 @@
+// import { NextResponse } from 'next/server'
+// import type { NextRequest } from 'next/server'
+
+// export function middleware(request: NextRequest) {   
+//   const url = request.nextUrl.clone()   
+//   if (url.pathname === '/') {
+//     url.pathname = 'https://rcadmin1.auth.us-west-2.amazoncognito.com/login?client_id=63040hgvklso6cfdotcd651jah&response_type=code&scope=aws.cognito.signin.user.admin+email+openid+phone+profile&redirect_uri=http://localhost:3000/agent'
+//     return NextResponse.redirect(url)   
+//   } 
+// }

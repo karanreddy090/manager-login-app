@@ -40,6 +40,7 @@ export default function LoginForm({ isLoggedin, setIsLoggedin }:{isLoggedin:bool
 
   return (
     <div className="container">
+      <a href="https://rcadmin1.auth.us-west-2.amazoncognito.com/login?client_id=63040hgvklso6cfdotcd651jah&response_type=code&scope=aws.cognito.signin.user.admin+email+openid+phone+profile&redirect_uri=http://localhost:3000/">Sign in</a>
       {!isLoggedin && <form onSubmit={handleSubmit} method="post">
         <label htmlFor="username">User Name</label>
         <input onChange={(e) => setUsername(e.target.value)} type="text" id="username" name="username" value={username} />
