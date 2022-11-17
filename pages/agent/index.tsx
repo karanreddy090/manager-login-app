@@ -5,24 +5,23 @@ import { useState } from 'react';
 
 
 export default function Agent() {
+
   // verify cognito cookie exists
   // use it to call SF and get agent list
 
-  // const handleAgentLogin = (event: React.FormEvent<HTMLFormElement>) => {
-  //   debugger;
-  //   setIsSubmiting(true);
-  //   const data = new FormData(event.target);
-  //   agentlogin({ username, password, isAdmin: data.isAdmin, agent: data.agent }, setIsSubmiting).then(data => {
-  //     if (data.AccessToken != null) {
-  //       setIsLoggedin(true);
-  //     }
-  //   }).catch(err => {
-  //     console.log("Login failed"); // Handle this in the UI
-  //     console.log(err);
-  //   });
-  //   event.preventDefault();
-  // }
+    
+  const [agent, setAgent] = useState("SueSeaberg@Hsfranchise.com");
+  const [isSubmitting, setIsSubmiting] = useState(false);
 
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    setIsSubmiting(true);
+    window.location.replace('https://hsfaffiliates--fullcopy.sandbox.my.site.com/resourcecenter/services/auth/sso/AWS_Cognito?state='+agent);
+    event.preventDefault();
+  }
+
+  const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setAgent(event.target.value);
+  }
 
   return (
     <div className="container">      
@@ -34,14 +33,13 @@ export default function Agent() {
                 Login as Agent
             </h1>
        </main>
-       <form method="post">
-        <input type="hidden" id="isAdmin" name="isAdmin" value={"true"} />
+       <form method="post" onSubmit={handleSubmit}>
         <label htmlFor="agents">Choose a agent:</label>
-        <select name="agents" id="agents">
+        <select name="agents" id="agents" onChange={handleChange}>
           <option value="SueSeaberg@Hsfranchise.com">Sue Seaberg</option>
           <option value="cedwards@bhhspreferredauburn.com.invalid">C Edwards</option>
         </select>
-        <button type="submit">Login As</button>
+        <button type="submit" disabled={isSubmitting}>Login As</button>
       </form>
     </div>
   )
