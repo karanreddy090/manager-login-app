@@ -6,10 +6,9 @@ import { useRouter } from 'next/router';
 
 export default function IndexPage() {
   // check for cookie and redirect accordingly
-  console.log("home page 1");
+  
   useEffect(() => {
-    console.log("home page 2");
-    window.location.replace('https://rcadmin1.auth.us-west-2.amazoncognito.com/login?client_id=63040hgvklso6cfdotcd651jah&response_type=code&scope=aws.cognito.signin.user.admin+email+openid+phone+profile&redirect_uri=http://localhost:3000/agent');
+    window.location.replace('https://rcadmin1.auth.us-west-2.amazoncognito.com/login?client_id=63040hgvklso6cfdotcd651jah&response_type=code&scope=aws.cognito.signin.user.admin+email+openid+phone+profile&redirect_uri=https://manager-login-app.vercel.app/agent/');
   })
   
   // const [isLoggedin, setIsLoggedin] = useState(false);
