@@ -8,7 +8,7 @@ export default function IndexPage() {
   const router = useRouter();
   useEffect(() => {
     
-    window.location.replace('https://rcadmin1.auth.us-west-2.amazoncognito.com/login?client_id=63040hgvklso6cfdotcd651jah&response_type=code&scope=aws.cognito.signin.user.admin+email+openid+phone+profile&redirect_uri=https://manager-login-app.vercel.app/agent/');
+    window.location.replace('https://rcadmin1.auth.us-west-2.amazoncognito.com/login?client_id=63040hgvklso6cfdotcd651jah&response_type=token&scope=aws.cognito.signin.user.admin+email+openid+phone+profile&redirect_uri=https://manager-login-app.vercel.app/agent/');
   })
   
   // const [isLoggedin, setIsLoggedin] = useState(false);
