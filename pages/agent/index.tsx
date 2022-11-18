@@ -57,7 +57,7 @@ export default function Agent() {
         <label htmlFor="agents">Choose a agent:</label>
         <select name="agents" id="agents" onChange={handleChange}>
           <option value="SueSeaberg@Hsfranchise.com">Sue Seaberg</option>
-          <option value="cedwards@bhhspreferredauburn.com">C Edwards</option>
+          <option value="cedwards@bhhspreferredauburn.com.invalid">C Edwards</option>
         </select>
         <button type="submit" disabled={isSubmitting}>Login As</button>
       </form>
